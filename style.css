@@ -1,0 +1,445 @@
+/* Reset i style ogólne */
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffeef2 0%, #ffd1dc 100%);
+      color: #4a4a4a;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    #welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff4b6e 0%, #ffd1dc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+.welcome-box {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  max-width: 360px;
+  width: 90%;
+}
+.welcome-box h2 { color: #ff4b6e; margin-bottom: 5px; font-size: 1.6rem; }
+.welcome-box p { color: #6a6a6a; margin-bottom: 15px; font-size: 0.95rem; }
+
+/* Wyświetlacz kodu */
+.pin-display {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 10px;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: #ff4b6e;
+  border: 2px solid #ffd1dc;
+}
+
+/* Klawiatura numeryczna */
+.pin-keyboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 260px;
+  margin: 0 auto;
+}
+.pin-btn {
+  background: #fff0f3;
+  color: #ff4b6e;
+  border: 1px solid #ffd1dc;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pin-btn:hover { background: #ff4b6e; color: white; transform: scale(1.05); }
+.pin-btn.clear { background: #f5f5f5; color: #6a6a6a; border-color: #ddd; }
+.pin-btn.enter { background: #4caf50; color: white; border-color: #4caf50; }
+.pin-btn.enter:hover { background: #43a047; }
+
+
+    /* Pasek na samej górze strony */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: rgba(255, 75, 110, 0.95);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    .top-bar span {
+      margin: 0 10px;
+    }
+
+    /* Główny kontener strony */
+    .main-container {
+      margin-top: 90px; /* Margines, aby pasek top-bar nie zasłaniał treści */
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Nagłówek i tekst miłosny */
+    .love-header {
+      margin-bottom: 30px;
+       animation: heartbeat 1.5s infinite alternate;
+    }
+
+.tekstt {
+  text-align: center;
+  align-self: flex-start;  
+  padding-top: 30px;
+  margin-top: 450px;
+  position: absolute;  
+  max-width: 500px;
+  color: white;
+  text-shadow: 
+    -1px -1px 0 rgb(0, 0, 0),
+     1px -1px 0 rgb(0, 0, 0),
+    -1px  1px 0 rgb(0, 0, 0),
+     1px  1px 0 rgb(0, 0, 0);
+  background: rgba(255, 75, 110, 0.95);
+  padding: 5px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+/* TĘ REGUŁĘ AKTUALIZUJEMY: */
+.tekstt h2 {
+  color: white;
+  text-shadow: none; /* Całkowicie wyłącza dziedziczenie czarnego obrysu */
+}
+
+/* Kontener główny teledysku (czarny prostokąt) */
+.music-box {
+  position: absolute;
+  align-self: flex-start; 
+  max-width: 500px;     /* Szerokość okienka */
+  width: 90%;           /* Dopasowanie do ekranu telefonu */
+  margin-top: 100px;
+  aspect-ratio: 16 / 9; /* Zachowanie idealnych proporcji filmu kinowego */
+  border-radius: 20px;  /* Zaokrąglone rogi */
+  overflow: hidden;     /* Ucięcie wystającego filmu */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  background: #000;     /* Czarne tło przed załadowaniem filmu */
+  outline: none;
+}
+
+/* Plik wideo zablokowany idealnie wewnątrz ramki */
+.music-box video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* Wypełnienie kadru bez rozciągania obrazu */
+  z-index: 1;
+  opacity: 1;           /* Domyślnie film widać w 100% czysto */
+  transition: opacity 0.3s ease; /* Płynne ściemnianie wideo */
+}
+
+/* Warstwa z napisami i przyciskiem (domyślnie ukryta: opacity 0) */
+.music-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8); /* Wyraźny cień pod tekstem */
+  
+  /* Ukrycie menu na starcie */
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.4); /* Przyciemniająca nakładka na film */
+  transition: opacity 0.3s ease; /* Płynne pojawianie się menu */
+}
+
+/* AKTYWACJA MENU: Po najechaniu (PC) lub kliknięciu (Telefon) */
+.music-box:hover .music-content,
+.music-box:focus .music-content,
+.music-box:active .music-content {
+  opacity: 1; /* Pokazuje napisy i przycisk */
+}
+
+.music-box:hover video,
+.music-box:focus video,
+.music-box:active video {
+  opacity: 0.5; /* Ściemnia film w tle, aby napisy były czytelne */
+}
+
+/* Stylizacja tekstów wewnątrz odtwarzacza */
+.music-content p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.song-title {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-bottom: 15px;
+}
+
+/* Różowy przycisk sterowania nałożony na wideo */
+.music-content button {
+  background: #ff4b6e;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 75, 110, 0.4);
+  transition: transform 0.2s;
+}
+.music-content button:hover {
+  transform: scale(1.05);
+}
+
+
+    
+    .love-header h1 {
+      color: #ff4b6e;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .love-header p {
+      font-size: 1.2rem;
+      color: #6a6a6a;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* Slider ze zdjęciami */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(255, 75, 110, 0.25);
+  background: white;
+  
+  /* KLUCZOWE: Płynne przejście dla całej ramki trwające 0.3 sekundy */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    }
+    .carousel {
+      display: flex;
+      overflow: hidden;
+      scroll-behavior: smooth;
+    }
+    .carousel-item {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+      aspect-ratio: 4 / 3;
+    }
+    .carousel img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       transition: transform 0.4s ease; /* Płynne powiększenie trwające 0.4 sekundy */
+}
+
+
+/* EFEKT POWIĘKSZENIA I UNIESIENIA CAŁEJ RAMKI PO NAJECHANIU */
+.carousel-wrapper:hover {
+  transform: scale(1.03); /* Powiększa całą ramkę o 3% */
+  box-shadow: 0 15px 35px rgba(255, 75, 110, 0.4); /* Wzmacnia i rozmywa różowy cień dla efektu 3D */
+}
+
+/* Styl dla ciemnego tła na cały ekran */
+#lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Bardzo ciemne, eleganckie tło */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* Musi być nad ekranem blokady i górnym paskiem */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease; /* Płynne pojawianie się */
+}
+
+/* Kiedy lightbox jest aktywny */
+#lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Styl dla samego powiększonego zdjęcia */
+#lightbox-img {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+#lightbox-overlay.active #lightbox-img {
+  transform: scale(1); /* Lekkie, płynne powiększenie zdjęcia przy otwarciu */
+}
+
+/* Przycisk zamykania (X) */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+.lightbox-close:hover {
+  color: #ff4b6e;
+}
+
+
+    .image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      padding: 15px;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 75, 110, 0.7);
+      color: white;
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      z-index: 10;
+    }
+    .arrow-btn:hover {
+      background: rgba(255, 75, 110, 1);
+    }
+    .left { left: 15px; }
+    .right { right: 15px; }
+
+    /* Sekcja z listem / powodami miłości */
+    .love-letter {
+      background: white;
+      padding: 30px;
+      margin-top: 20px;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      margin-bottom: 50px;
+    }
+    .love-letter h2 {
+      color: rgb(255, 74, 110);
+      margin-bottom: 15px;
+    }
+    .love-letter ul {
+      list-style-type: none;
+      text-align: left;
+      display: inline-block;
+    }
+    .love-letter li {
+      font-size: 1.1rem;
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+    }
+    .love-letter li::before {
+      content: "💖";
+      margin-right: 15px;
+    }
+
+    /* Animacja pulsującego serca */
+    @keyframes heartbeat {
+      from { transform: scale(1); }
+      to { transform: scale(1.03); }
+    }
+
+    /* Spadające/pływające serduszka w tle */
+    .heart-bg {
+      position: fixed;
+      top: -10vh;
+      font-size: 24px;
+      color: #ff0000;
+      user-select: none;
+      pointer-events: none;
+      animation: float 8s linear infinite;
+      z-index: -1;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+
+        .container {
+            text-align: center;
+            background: rgb(253, 253, 253);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 
+              -1px -1px 0 rgb(255, 74, 110),
+             1px -1px 0 rgb(255, 74, 110),
+             -1px  1px 0 rgb(255, 74, 110),
+             1px  1px 0 rgb(255, 74, 110);
+
+          }
+        #timer {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-variant-numeric: tabular-nums;
+            color: rgb(255, 74, 110);
+        }

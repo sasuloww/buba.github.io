@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang='pl'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='style.css'>
+  <title>Dla mojej buby ❤️</title>
+</head>
+<body>
+
+<div id="welcome-overlay">
+  <div class="welcome-box">
+    <h2>Strona zablokowana... 🔒</h2>
+    <p>Wpisz kod, aby otworzyc zawartość</p>
+    
+    <!-- Wyświetlacz kodu -->
+    <div class="pin-display" id="pin-display">***</div>
+    
+    <!-- Klawiatura ekranowa -->
+    <div class="pin-keyboard">
+      <button class="pin-btn" onclick="pressKey('1')">1</button>
+      <button class="pin-btn" onclick="pressKey('2')">2</button>
+      <button class="pin-btn" onclick="pressKey('3')">3</button>
+      <button class="pin-btn" onclick="pressKey('4')">4</button>
+      <button class="pin-btn" onclick="pressKey('5')">5</button>
+      <button class="pin-btn" onclick="pressKey('6')">6</button>
+      <button class="pin-btn" onclick="pressKey('7')">7</button>
+      <button class="pin-btn" onclick="pressKey('8')">8</button>
+      <button class="pin-btn" onclick="pressKey('9')">9</button>
+      <button class="pin-btn clear" onclick="clearPin()">C</button>
+      <button class="pin-btn" onclick="pressKey('0')">0</button>
+      <button class="pin-btn enter" onclick="checkPin()">✔</button>
+    </div>
+    
+    <p id="pin-error" style="color: #ff4b6e; font-weight: bold; margin-top: 10px; display: none;">Niepoprawny kod! Spróbuj ponownie 🥺</p>
+  </div>
+</div>
+
+
+
+  <!-- Pasek na samej górze strony -->
+  <div class="top-bar">
+    <span>❤️ Dla Wstrętnej baby ❤️</span>
+  </div>
+
+  <!-- Główna zawartość strony -->
+  <div class="main-container">
+    
+    <div class="love-header">
+      <h1>Kocham Cię! 🥰</h1>
+    </div>
+    <div class="tekstt">
+      <h3>Tekst na dziś:</h3>
+      <p id="tekst-ai">Wczytuję Twoją dzisiejszą wiadomość...</p>
+    </div>
+
+<div class="music-box" tabindex="0">
+  <video id="nasze-video" src="cheatz2.mp4" loop playsinline></video>
+
+  <div class="music-content">
+    <p>Nasza piosenka 🎵</p>
+    <span class="song-title">Cheatz - NIESKOŃCZONOŚĆ</span>
+    <button id="music-control-btn" onclick="togglePlay(event)">Włącz muzykę ▶️</button>
+  </div>
+</div>
+
+
+
+
+
+    <div class="carousel-wrapper">
+      <button class="arrow-btn left" onclick="scrollSlider(-1)">&#10094;</button>
+      
+      <div class="carousel" id="love-carousel">
+        <div class="carousel-item">
+          <img src="foto9.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">Pierwsze spotkanie 👩‍❤️‍👨</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto4.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">Moja buba ❤️</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto5.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">Słodka jestes wiesz? </div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto6.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">Zakapturzona wredna baba 😘</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto7.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">👍</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto8.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">Ciekawy filter 🙃</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto1.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">Fajny język masz 👩‍❤️‍👨</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto22.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">Twój uśmiech, który rozjaśnia każdy mój dzień! 😊</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto3.jpg" alt="ZDJECIE" onclick="openLightbox(this)" style="cursor: pointer;">
+          <div class="image-caption">Na zawsze razem, niezależnie od tego co się będzie działo 🌍</div>
+        </div>
+      </div>
+      
+      <button class="arrow-btn right" onclick="scrollSlider(1)">&#10095;</button>
+    </div>
+
+    <!-- Sekcja z wyznaniami -->
+    <div class="love-letter">
+      <h2>Kilka powodów, dla których Cię kocham:</h2>
+      <ul>
+        <li>Za to, że wprowadziłaś do mojego życia wchuj dużo szczęścia </li>
+        <li>Za twoje bardzo piękne oczka 👀 </li>
+        <li>Za to, że jesteś sobą i czuje sie wchuj dobrze przy tobie</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Skrypty JavaScript -->
+  <script>
+    // Obsługa slidera zdjęć
+    function scrollSlider(direction) {
+      const carousel = document.getElementById('love-carousel');
+      const itemWidth = carousel.clientWidth;
+      carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+    }
+
+    // Generowanie latających serduszek w tle
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-bg');
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 4 + 6 + 's'; // od 6 do 10 sekund
+      heart.style.fontSize = Math.random() * 15 + 15 + 'px'; // wielkość serca
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+    // Twórz nowe serduszko co 600ms
+    setInterval(createHeart, 600);
+  </script>
+
+
+
+
+
+<div class="container">
+        <h1>Jesteśmy razem:</h1>
+        <div id="timer">Ładowanie...</div>
+    </div>
+
+    <script>
+        // Ustawienie daty początkowej (21 marca 2026 r.)
+        const startDate = new Date('2026-03-21T00:00:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const difference = now - startDate;
+
+            // Obliczenia dla dni, godzin, minut i sekund
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Formatowanie wyświetlania (dodanie zera na początku dla liczb jednocyfrowych)
+            const formatHours = hours < 10 ? '0' + hours : hours;
+            const formatMinutes = minutes < 10 ? '0' + minutes : minutes;
+            const formatSeconds = seconds < 10 ? '0' + seconds : seconds;
+
+            // Wyświetlenie wyniku w dokumencie
+            document.getElementById('timer').innerHTML = 
+                `${days} dni, ${formatHours}:${formatMinutes}:${formatSeconds}`;
+        }
+
+        // Odświeżanie licznika co 1 sekundę (1000 milisekund)
+        setInterval(updateTimer, 1000);
+
+        // Wywołanie funkcji od razu przy załadowaniu strony
+        updateTimer();
+    </script>
+
+
+
+
+
+ <script>
+    // Baza 365 unikalnych wiadomości od AI
+    const wiadomosciMilosne = [
+      "Jesteś najpiękniejszym powodem, dla którego budzę się z uśmiechem na twarzy. 🥰",
+      "Mój świat jest o tysiąc razy piękniejszy, odkąd jesteś w nim Ty. ❤️",
+      "Nawet najgorszy dzień staje się idealny, kiedy mogę usłyszeć Twój głos. 🌸",
+      "Jesteś moją bezpieczną przystanią i największym szczęściem. ☀️",
+      "Twoje serce to jedyne miejsce na ziemi, w którym chcę zostać na zawsze. 🔐",
+      "Dziękuję, że jesteś nie tylko moją dziewczyną, ale i najlepszym przyjacielem. 🤝",
+      "Kocham Cię w każdym wydaniu, w każdej sekundzie i za wszystko, czym jesteś. ✨",
+      "Jesteś moim ulubionym powitaniem i najtrudniejszym pożegnaniem. 🥺",
+      "Wystarczy jedna myśl o Tobie, aby mój dzień stał się niesamowity. 🧠❤️",
+      "Twoje szczęście jest dla mnie najważniejsze na całym świecie. 🌍",
+      "Jesteś definicją piękna, zarówno z zewnątrz, jak i w środku. 💎",
+      "Każda chwila bez Ciebie uczy mnie tylko tego, jak bardzo Cię potrzebuję. ⏳",
+      "Uwielbiam sposób, w jaki na mnie patrzysz i sprawiasz, że czuję się wyjątkowy. 👀",
+      "Jesteś moją iskierką w ciemności i największą dumą. 🌟",
+      "Gdybym miał wybrać jeszcze raz, bez wahania wybrałbym Ciebie. Zawsze. 🎯",
+      "Twój uśmiech to najpiękniejszy widok, jaki potrafię sobie wyobrazić. 😍",
+      "Jesteś moim dzisiaj, jutrem i każdym kolejnym dniem. 📅",
+      "Dzięki Tobie uczę się, czym jest prawdziwa i bezwarunkowa miłość. 🕊️",
+      "Twoja obecność sprawia, że chcę być lepszym człowiekiem każdego dnia. 📈",
+      "Kocham Cię mocniej, niż jakiekolwiek słowa byłyby w stanie to opisać. 📝",
+      "Jesteś najjaśniejszą gwiazdą na moim niebie. ⭐",
+      "Z Tobą nawet zwykłe siedzenie w ciszy jest najwspanialszą przygodą. 🛋️",
+      "Dziękuję za Twoją cierpliwość, czułość i całe ciepło, które mi dajesz. 🔥",
+      "Jesteś moim domem. Gdziekolwiek jesteś Ty, tam jest moje miejsce. 🏠",
+      "Nie wyobrażam sobie już przyszłości, w której nie byłoby Twojej dłoni w mojej. 🤝",
+      "Twoje oczy mają w sobie magię, która za każdym razem mnie hipnotyzuje. 🔮",
+      "Jesteś moim najsłodszym uzależnieniem. 🍬",
+      "Uwielbiam to, jak bardzo się uzupełniamy i jak świetny tworzymy zespół. ⚡",
+      "Sprawiasz, że moje serce bije szybciej za każdym razem, gdy Cię widzę. 💓",
+      "Jesteś najpiękniejszą piosenką, jakiej moje serce kiedykolwiek słuchało. 🎶",
+      "Żaden skarb na ziemi nie ma dla mnie większej wartości niż Twoje zaufanie. 🪙",
+      "Dzielenie z Tobą życia to najlepsze, co mogło mnie spotkać. 🎁",
+      "Jesteś moim słońcem w nawet najbardziej pochmurny dzień. 🌦️",
+      "Kocham każdy milimetr Twojej unikalnej i cudownej osobowości. 🧩",
+      "Twoje przytulenie potrafi uleczyć każdy ból i stres. 🫂",
+      "Jesteś moim największym sukcesem i najcenniejszą nagrodą. 🏆",
+      "Nigdy nie przestanę dziękować losowi za ten dzień, w którym Cię poznałem. 🗓️",
+      "Jesteś moim natchnieniem, moją radością i całym moim światem. 🌌",
+      "Twój śmiech to zdecydowanie mój ulubiony dźwięk na świecie. 🎵",
+      "Kocham Cię za to, kim jesteś przy mnie, i za to, kim ja staję się przy Tobie. 🪞",
+      "Jesteś po prostu niesamowita. Pamiętaj o tym w każdej minucie dzisiejszego dnia! 🦁",
+      "Moje serce należy do Ciebie całkowicie, bez żadnych wyjątków. 💘",
+      "Zawsze potrafisz mnie zaskoczyć i sprawić, że zakochuję się na nowo. 🪄",
+      "Jesteś najmilszą myślą, jaka krąży po mojej głowie w ciągu dnia. ☁️",
+      "Twoje dobro i troskliwość nie przestają mnie zadziwiać. 🧸",
+      "Jesteś moim idealnym dopasowaniem pod każdym możliwym względem. 🔗",
+      "Dziękuję za to, że akceptujesz mnie ze wszystkimi moimi wadami. 🩹",
+      "Przy Tobie czuję, że mogę zdobyć każdy szczyt i pokonać każdą przeszkodę. ⛰️",
+      "Jesteś moim największym marzeniem, które się spełniło. 🌠",
+      "Twoja miłość daje mi siłę, o której istnieniu nie miałem pojęcia. 💪",
+      "Uwielbiam każdą wspólną sekundę, nawet tę najbardziej leniwą. 🛌",
+      "Jesteś po prostu niezastąpiona i wyjątkowa na skalę całego wszechświata. 🪐",
+    "Moje życie nabrało sensu i kolorów dopiero w momencie, gdy się w nim pojawiłaś. 🎨",
+"Kocham Cię dzisiaj bardziej niż wczoraj, ale obiecuję, że mniej niż jutro. 📈",
+"Jesteś moim powodem do dumy. Uwielbiam mówić innym, że jesteś moja. 🗣️❤️",
+"Twój dotyk sprawia, że wszystkie problemy nagle przestają mieć znaczenie. 🪶",
+"Jesteś moją muzą i najwspanialszą historią mojego życia. 📖",
+"Dziękuję za każdy uśmiech, który we mnie wywołujesz. A robisz to bez przerwy! 😄",
+"Jesteś moim największym wsparciem i najwierniejszym kibicem. 📣",
+"Moje serce wybrało Ciebie i z każdym dniem upewnia się, że to najlepszy wybór. 🎯",
+"Jesteś po prostu stworzona do tego, by być kochaną... a ja uwielbiam to robić! 🔥",
+"Dla mnie jesteś idealna, niezależnie od tego, co sama o sobie myślisz. 👑",
+"Twój zapach to mój ulubiony zapach na świecie. 🌹",
+"Jesteś najlepszą częścią każdego mojego dnia. 🍕",
+"Nie ma minuty, w której nie życzyłbym sobie mieć Cię tuż obok siebie. 🗺️",
+"Jesteś moim aniołem, który opiekuje się moim sercem. 👼",
+"Uwielbiam słuchać Twoich opowieści, Twojego głosu i Twoich planów. 💬",
+"Zrobię wszystko, abyś przy mnie czuła się najszczęśliwszą kobietą na świecie. 🦸",
+"Jesteś moim uroczym promieniem słońca, który rozgania wszelkie chmury. ☀️",
+"Dziękuję, że wnosisz tyle spokoju i radości w moje chaotyczne życie. 🌊",
+"Twoje spojrzenie potrafi roztopić nawet największy lód w moim sercu. ❄️🔥",
+"Jesteś moją pierwszą myślą po przebudzeniu i ostatnią przed zaśnięciem. 🛌",
+"Kocham Cię nie tylko za to, jaka jesteś, ale za to, jak cudownie się przy Tobie czuję. 🥰",
+"Jesteś najpiękniejszą zagadką, którą chcę rozwiązywać przez całe życie. 🧩",
+"W Twoich ramionach odnajduję spokój, którego nie da się kupić za żadne pieniądze. 🧘",
+"Jesteś moim motywatorem do działania i stawania się lepszą wersją siebie. 🚀",
+"Uwielbiam Twój charakter, Twoją mądrość i Twoje poczucie humoru. 🧠🎭",
+"Twoja miłość to najwspanialszy prezent, jaki kiedykolwiek otrzymałem. 💝",
+"Jesteś moim bezpiecznym miejscem, do którego zawsze chcę wracać. 🚪",
+"Kocham Cię bezgranicznie i bez żadnych warunków wstępnych. Na zawsze. ♾️",
+"Jesteś po prostu najwspanialszą osobą, jaką znam. Pamiętaj o tym dzisiaj! 🏆",
+"Twój uśmiech ma w sobie moc naprawiania całego mojego świata. 🛠️😊",
+"Jesteś moim najpiękniejszym snem na jawie. 💭",
+"Dziękuję, że uczysz mnie, jak kochać szczerze i z całego serca. 🎓❤️",
+"Nie ma na świecie rzeczy, której nie zrobiłbym, żeby zobaczyć Twoją radość. 🎢",
+"Jesteś moim uosobieniem szczęścia. 🥰",
+"Twoja obecność w moim życiu to czysta magia. 🪄",
+"Kocham Cię za wszystkie małe rzeczy, które robisz każdego dnia, nawet nie zdając sobie z tego sprawy. 🔎",
+"Jesteś moim największym natchnieniem do walki o naszą wspólną przyszłość. 🏗️",
+"Twój głos działa na mnie uspokajająco w każdej sytuacji. 📻",
+"Jesteś moim najcenniejszym diamentem, o który będę dbać z całych sił. 💎",
+"Dziękuję za każdą wspólną kawę, rozmowę i przytulenie. ☕",
+"Jesteś moim powodem do dumy i najpiękniejszą ozdobą mojego życia. 🥇",
+"Uwielbiam to, jak potrafisz rozjaśnić moje myśli jednym miłym słowem. 💡",
+"Twoje serce jest najbezpieczniejszym schronieniem dla moich uczuć. 🛡️",
+"Kocham Cię z każdym uderzeniem mojego serca, coraz mocniej i mocniej. 🥁",
+"Jesteś po prostu idealna dla mnie. Taka, jaka jesteś. 🍕❤️",
+"Dla mnie jesteś ósmym cudem świata, jedynym, który naprawdę się liczy. 🗿",
+"Twoja miłość sprawia, że czuję się najbogatszym człowiekiem na ziemi. 💰✨",
+"Jesteś moją oazą na pustyni i chłodem w upalny dzień. 🌴",
+"Dziękuję za to, że po prostu jesteś. Twoja obecność to dar. 🎁",
+"Nie wyobrażam sobie spędzić reszty życia z nikim innym, tylko z Tobą. 💍",
+"Twój uśmiech jest cenniejszy niż wszystkie gwiazdy na niebie. ✨🗺️",
+"Jesteś moim ulubionym powodem do uśmiechania się do ekranu telefonu. 📱🥰",
+"Kocham Cię za Twój intelekt, Twoje serce i Twoją niesamowitą duszę. 🧠",
+"Jesteś moją inspiracją do robienia rzeczy wielkich i pięknych. 🎨",
+"Przy Tobie czuję, że odnalazłem swoje właściwe miejsce na ziemi. 📍",
+"Twój dotyk wysyła prąd prosto do mojego serca. ⚡❤️",
+"Jesteś najpiękniejszą melodią, która nigdy mi się nie znudzi. 🎵",
+"Dziękuję, że znosisz moje humory i zawsze oferujesz mi swoje wsparcie. 🐻",
+"Jesteś moją dumą i najwspanialszą przyjaciółką pod słońcem. ☀️",
+"Moje serce bije w rytmie Twojego imienia. 💓",
+"Z Tobą każdy dzień to małe święto i powód do radości. 🎈",
+"Jesteś najwspanialszą kobietą, jaką kiedykolwiek poznałem. Prawdziwy skarb. 🪙",
+"Kocham Cię bez względu na pogodę, czas i okoliczności. Zawsze. 🌪️☀️",
+"Twój uśmiech to mój absolutnie ulubiony widok o poranku. 🌅",
+"Jesteś moim motywem przewodnim i najpiękniejszym celem w życiu. 🏁",
+"Dziękuję za to, jak wspaniale potrafisz się mną zaopiekować. 🥺",
+"Jesteś moją słodką tajemnicą i największym jawnym sukcesem. 🏆",
+"Przy Tobie zapominam o całym stresie i problemach świata zewnętrznego. 💆‍♂️",
+"Kocham Cię tak bardzo, że aż brakuje mi słów, by to opisać. 🔥",
+"Jesteś moim numerem jeden, dzisiaj, jutro i na wieki wieków. 🥇",
+"Twój wzrok potrafi wyczytać z moich oczu każdą myśl. 👁️🎨",
+"Jesteś najwspanialszą niespodzianką, jaką zgotował mi los. 🎊",
+"Dziękuję za każdą sekundę Twojej uwagi i miłości. ⏳❤️",
+"Jesteś moim najukochańszym człowiekiem na całej tej wielkiej planecie. 🌍🥰",
+"Moje serce jest bezpieczne tylko wtedy, gdy znajduje się blisko Twojego. 🔐",
+"Uwielbiam to, jak bardzo potrafisz mnie zmotywować do bycia lepszym. 🚀",
+"Jesteś po prostu najpiękniejszym elementem mojego życia. 🧩👑",
+"Kocham Cię z głębi duszy, z całych sił i z każdego kawałka mojego serca. ❤️",
+"Twój uśmiech jest w stanie rozgonić największą burzę w moich myślach. ⛈️☀️",
+"Jesteś moją definicją szczęścia i domowego ciepła. 🏡",
+"Dziękuję za to, że zawsze potrafisz podnieść mnie na duchu. 🎈",
+"Jesteś moim najwspanialszym na świecie powodem do dumy. 🌟",
+"Przy Tobie czuję, że moje życie jest kompletne i ma właściwy kierunek. 🧭",
+"Twój szept to moja ulubiona muzyka na dobranoc. 🌌🎵",
+"Jesteś moim spełnionym marzeniem z dzieciństwa o wielkiej miłości. 🌠",
+"Kocham Cię za to, jak bardzo jesteś wyjątkowa i niepowtarzalna. 🦄",
+"Dla mnie nie masz żadnych wad. Jesteś idealnym dziełem sztuki. 🎨",
+"Dziękuję za Twoje ciepłe spojrzenia, które rozgrzewają mnie w zimne dni. ❄️🔥",
+"Jesteś moim prywatnym aniołem stróżem. 👼❤️",
+"Moje serce należy do Ciebie i obiecuję dbać o Twoje z całych moich sił. 🤝",
+"Z Tobą chcę przeżyć każdą możliwą przygodę, jaką przyniesie los. 🗺️🏎️",
+"Jesteś moim najwspanialszym skarbem, którego nie oddam za nic na świecie. 🪙",
+"Kocham Cię każdego dnia mocniej, choć wczoraj myślałem, że to niemożliwe. 📈",
+"Twój uśmiech potrafi rozświetlić nawet najciemniejszy pokój. 💡😊",
+"Jesteś moim motywem do uśmiechu w każdej wolnej chwili. 💭🥰",
+"Dziękuję, że dzielisz ze mną swoje smutki i mnożysz moje radości. 🧮",
+"Jesteś moją najwspanialszą partnerką w zbrodni i w miłości. 🥷❤️",
+"Przy Tobie każda chwila nabiera wyjątkowego, magicznego znaczenia. 🪄",
+"Kocham Cię za Twoją mądrość, wyrozumiałość i niesamowitą czułość. 🧠",
+"Jesteś moim słońcem, moim księżycem i wszystkimi moimi gwiazdami. 🌌",
+"Twój głos w słuchawce telefonu potrafi poprawić mi humor w sekundę. 📞",
+"Jesteś moją dumą i najpiękniejszym powodem do pisania takich słów. 📝",
+"Dziękuję za to, że po prostu jesteś i czynisz mój świat lepszym miejscem. 🌍",
+"Jesteś moim najwspanialszym snem, z którego nigdy nie chcę się obudzić. 🛌💭",
+"Moje serce bije tylko dla Ciebie, pamiętaj o tym w każdej minucie. 💓",
+"Uwielbiam Twoje poczucie humoru i to, jak uroczo się śmiejesz. 😂❤️",
+"Jesteś moim absolutnym numerem jeden na całym świecie. 🥇",
+"Kocham Cię za wszystko, co zrobiliśmy razem, i za wszystko, co dopiero przed nami. 🚀",
+"Twój dotyk potrafi uspokoić moje najbardziej szalone myśli. 🪶",
+"Jesteś najwspanialszym prezentem, jaki kiedykolwiek dostałem od życia. 🎁🥰",
+"Dziękuję za Twój uśmiech, który jest dla mnie drogowskazem w ciemności. 🧭",
+"Jesteś moim bezpiecznym schronieniem przed całym światem. 🛡️🏠",
+"Przy Tobie czuję, że nie muszę nikogo udawać – mogę być po prostu sobą. 🪞",
+"Kocham Cię miłością czystą, głęboką i absolutnie niezmienną. 💎",
+"Jesteś po prostu najpiękniejszą rzeczą, jaka mnie w życiu spotkała. 🌸",
+"Twój uśmiech ma moc zmieniania mojego dnia w pasmo sukcesów. 🏆😊",
+"Jesteś moim natchnieniem do bycia najlepszym partnerem na świecie. 🦸‍♂️",
+"Dziękuję za Twoje zaufanie, to dla mnie najważniejsza rzecz na świecie. 🤝",
+"Jesteś moją dumą, moją miłością i moim największym szczęściem. 🌟",
+"Moje serce wybrało Ciebie i nigdy nie zmieni swojego zdania. 🎯❤️",
+"Z Tobą każdy dzień to nowa, ekscytująca strona w naszej książce. 📖",
+"Jesteś moim uosobieniem doskonałości pod każdym względem. 👑",
+"Kocham Cię tak bardzo, że żadne słowa nie są w stanie tego oddać. 🔥",
+"Twój śmiech to zdecydowanie moja ukochana ścieżka dźwiękowa. 🎶",
+"Jesteś moim słońcem, które ogrzewa moje serce każdego ranka. 🌅",
+"Dziękuję za Twoje dobre serce i za to, jak bardzo o mnie dbasz. 🧸",
+"Jesteś moją najwspanialszą przyjaciółką i miłością mojego życia. 🫂",
+"Przy Tobie nawet najzwyklejszy dzień staje się niesamowitym świętem. 🎈",
+"Kocham Cię bez względu na wszystko, z całego mojego serca. 💘",
+"Twój wzrok sprawia, że topnieją we mnie wszelkie zmartwienia. 👀❄️",
+"Jesteś moją pierwszą i najważniejszą myślą każdego dnia. 🧠🥰",
+"Dziękuję za to, że zawsze mogę na Ciebie liczyć, niezależnie od wszystkiego. 🤝",
+"Jesteś moim największym powodem do dumy przed całym światem. 🗣️🌟",
+"Moje serce bije mocniej za każdym razem, gdy słyszę kroki za drzwiami. 🚪💓",
+"Uwielbiam Twoją unikalną osobowość – jesteś po prostu niesamowita. 🎨",
+"Jesteś moim najwspanialszym skarbem, o który będę dbać do końca świata. 🪙",
+"Kocham Cię miłością, która z każdym dniem rośnie i staje się silniejsza. 📈",
+"Twój uśmiech to mój absolutnie ulubiony widok na tej planecie. 🌍😊",
+"Jesteś moim motywatorem do robienia rzeczy wielkich i pięknych. 🚀",
+"Dziękuję za każdą wspólną chwilę, bo każda jest dla mnie na wagę złota. 🪙⏳",
+"Jesteś moją najjaśniejszą gwiazdą przewodnią na życiowym niebie. ⭐",
+"Przy Tobie czuję, że odnalazłem swoje prawdziwe, bezpieczne miejsce. 📍🏡",
+"Kocham Cię za Twoją mądrość, dobroć i to cudowne poczucie humoru. 🧠💬",
+"Twój dotyk potrafi wygonić z mojego serca każdy smutek i lęk. 🪶",
+"Jesteś moim najpiękniejszym prezentem od losu, moim całym szczęściem. 🎁",
+"Dziękuję, że potrafisz rozjaśnić moje myśli jednym uroczym spojrzeniem. 👀💡",
+"Jesteś moim domem, moją ostoją i najwspanialszą rzeczą w życiu. 🏠❤️",
+"Moje serce jest całkowicie Twoje i obiecuję nigdy Cię nie zawieść. 🤝🔒",
+"Z Tobą chcę pisać kolejne rozdziały naszej wspólnej, pięknej historii. 📖",
+"Jesteś po prostu idealna dla mnie pod każdym możliwym względem. 👑",
+"Kocham Cię z całych sił, z głębi duszy i z każdego bicia mojego serca. 🥁❤️",
+"Twój uśmiech ma moc naprawiania nawet najbardziej zepsutego dnia. 🛠️😄",
+"Jesteś moim najmilszym snem, który stał się moją piękną rzeczywistością. 🛌💭",
+"Dziękuję za Twoją wyrozumiałość i niesamowite, ciepłe serce. 🧸",
+"Jesteś moją dumą i najwspanialszą partnerką na całej tej planecie. 🌍🥇",
+"Przy Tobie zapominam o istnieniu jakichkolwiek problemów czy stresu. 🧘‍♂️",
+"Kocham Cię tak bardzo, że brakuje mi słów, by móc to w pełni wyrazić. 🔥",
+"Twój głos w słuchawce to moja ulubiona muzyka na każdy dzień. 📻🎶",
+"Jesteś moim numerem jeden, dzisiaj, jutro i na całą wieczność. 🥇🔒",
+"Dziękuję za to, że po prostu jesteś i czynisz moje życie idealnym. 🎁✨",
+"Jesteś moim bezpiecznym schronieniem przed wszystkimi burzami świata. 🛡️⛈️",
+"Moje serce bije tylko dla Ciebie, pamiętaj o tym w każdej minucie dnia. 💓",
+"Uwielbiam to, jak potrafisz mnie rozśmieszyć do łez swoim urokiem. 😂❤️",
+"Jesteś moim najwspanialszym powodem do codziennej dumy i radości. 🌟",
+"Kocham Cię za wszystko, kim jesteś, i za to, kim jestem ja przy Tobie. 🪞🥰",
+"Twój dotyk wysyła ciepło prosto do najgłębszych zakamarków mojego serca. 🔥",
+"Jesteś najpiękniejszą melodią, której moje serce chce słuchać bez przerwy. 🎵",
+"Dziękuję za Twoje zaufanie – to dla mnie najcenniejsza rzecz na świecie. 🤝",
+"Jesteś moim słońcem, które nigdy nie zachodzi w moim sercu. 🌅❤️",
+"Przy Tobie czuję, że mogę osiągnąć dosłownie wszystko, co sobie zaplanuję. 🚀",
+"Kocham Cię miłością bezgraniczną, czystą i absolutnie nieskończoną. ♾️",
+"Twój uśmiech to mój ulubiony powód do pisania takich miłych słów. 📝😊",
+"Jesteś moim ósmym cudem świata, jedynym, który naprawdę mnie obchodzi. 🗿❤️",
+"Dziękuję za to, że akceptujesz mnie ze wszystkimi moimi wadami i potknięciami. 🩹",
+"Jesteś moją dumą, moim natchnieniem i całym moim ziemskim szczęściem. 🏆",
+"Moje serce wybrało Ciebie i z każdym dniem upewnia się w tym wyborze. 🎯",
+"Z Tobą nawet najzwyklejsze chwile stają się niezapomnianą przygodą. 🗺️",
+"Jesteś po prostu stworzona do tego, by być kochaną z całych sił. 🔥👑",
+"Kocham Cię dzisiaj jeszcze mocniej niż wczoraj, a jutro znowu pobiję ten rekord! 📈",
+"Twój wzrok potrafi wyczytać z moich oczu każde skryte marzenie. 👀🔮",
+"Jesteś najpiękniejszą niespodzianką, jaką los postanowił mi podarować. 🎊🥰",
+"Dziękuję za każdą sekundę Twojej uwagi, miłości i czułego ciepła. ⏳",
+"Jesteś moim najukochańszym człowiekiem na tej całej wielkiej planecie. 🌍🗺️",
+"Przy Tobie odnajduję spokój, którego nie da się kupić za żadne pieniądze. 🧘‍♂️✨",
+"Kocham Cię za Twój intelekt, Twoje wspaniałe serce i niesamowitą duszę. 🧠",
+"Twój śmiech to zdecydowanie najpiękniejszy dźwięk, jaki znam. 🎶😂",
+"Jesteś moim uosobieniem miłości i najwspanialszą częścią każdego dnia. 🍕❤️",
+"Dziękuję za Twoją cierpliwość, czułość i za to, jak cudownie o mnie dbasz. 🧸",
+"Jesteś moją bezpieczną przystanią, do której zawsze będę chciał wracać. 🚪⚓",
+"Moje serce bije w rytmie Twojego imienia, od rana do późnej nocy. 💓📅",
+"Uwielbiam to, jak bardzo się uzupełniamy i jak zgrany z nas duet. ⚡🤝",
+"Jesteś po prostu niezastąpiona i unikalna w skali całego wszechświata. 🪐👑",
+"Kocham Cię z całego serca, z całych sił i z całej mojej duszy. ❤️🌟",
+"Twój uśmiech rozprasza nawet największe i najciemniejsze chmury w głowie. ☀️⛈",
+"Jesteś moją dumą. Uwielbiam myśleć o tym, że jesteś właśnie moja. 🗣️🥰",
+"Dziękuję, że wnosisz tak niesamowity spokój w moje codzienne życie. 🌊",
+"Jesteś moim najpiękniejszym snem na jawie, który nigdy się nie kończy. 🛌💭",
+"Przy Tobie czuję, że odnalazłem swój dom i swoje właściwe miejsce. 🏠📍",
+"Kocham Cię za wszystkie małe rzeczy, które robisz każdego dnia z miłości. 🔎",
+"Twój dotyk sprawia, że wszystkie problemy świata nagle tracą na wadze. 🪶🔥",
+"Jesteś moją muzą i najwspanialszą autorką naszej wspólnej opowieści. 📖",
+"Dziękuję za każdy uśmiech, który we mnie wywołujesz swoim urokiem. 😄❤️",
+"Jesteś moim największym wsparciem i najwspanialszą przyjaciółką pod słońcem. ☀️🫂",
+"Moje serce należy do Ciebie całkowicie, na zawsze i bez żadnych warunków. 🔐💘",
+"Z Tobą chcę zwiedzić cały świat i przeżyć każdą możliwą przygodę. 🌍🏎️",
+"Jesteś moim najcenniejszym skarbem, którego będę strzec z całych sił. 🪙🛡️",
+"Kocham Cię z każdym kolejnym dniem mocniej, bez żadnych limitów. 📈🔥",
+"Twój uśmiech potrafi rozświetlić nawet najbardziej ponury o poranku dzień. 🌅😊",
+"Jesteś moim powodem do dumy przed każdym, kogo spotykam na drodze. 🗣️🏆",
+"Dziękuję, że dzielisz ze mną swoje piękne marzenia i plany na przyszłość. 🧭",
+"Jesteś moją najwspanialszą partnerką w miłości i w każdym wyzwaniu. 🤝❤️",
+"Przy Tobie każda chwila ma unikalne, głębokie i magiczne znaczenie. 🪄",
+"Kocham Cię za Twoją mądrość, dobroć i to wspaniałe serce z czystego złota. 🧠🥇",
+"Twój głos w słuchawce telefonu potrafi odmienić mój dzień w jedną sekundę. 📞💡",
+"Jesteś moją dumą i najwspanialszą inspiracją do pisania tych wyznań. 📝",
+"Dziękuję za to, że po prostu jesteś i czynisz mój świat idealnym miejscem. 🌍🥰",
+"Jesteś moim najwspanialszym losem na loterii życia. Moja główna wygrana. 🏆💰",
+"Moje serce bije tylko dla Ciebie, pamiętaj o tym w każdej minucie dnia. 💓🔒",
+"Uwielbiam Twoje poczucie humoru i to, jak słodko marszczysz nosek. 😂❤️",
+"Jesteś moim absolutnym numerem jeden i nic tego nigdy nie zmieni. 🥇",
+"Kocham Cię za naszą przeszłość, naszą teraźniejszość i wspólną przyszłość. 🚀⏳",
+"Twój dotyk potrafi wyciszyć moje najbardziej szalone i niespokojne myśli. 🪶",
+"Jesteś najwspanialszym prezentem, jaki mogłem otrzymać od losu. 🎁👑",
+"Dziękuję za Twój uśmiech, który jest dla mnie najlepszą nagrodą za wszystko. 🏆😄",
+"Jesteś moim bezpiecznym miejscem, moją oazą spokoju i radości. 🛡️🌴",
+"Przy Tobie czuję, że jestem dokładnie tym człowiekiem, kim chcę być. 🪞❤️",
+"Kocham Cię miłością czystą, głęboką, silną i absolutnie niezmienną. 💎",
+"Jesteś po prostu najpiękniejszą rzeczą, jaka przydarzyła mi się w życiu. 🌸🥰",
+"Twój uśmiech potrafi obrócić każdy smutek w czystą i szczerą radość. 🛠️😊",
+"Jesteś moim natchnieniem do stawania się lepszą wersją samego siebie. 🚀📈",
+"Dziękuję za Twoje zaufanie, które jest dla mnie największym zaszczytem. 🤝🔐",
+"Jesteś moją dumą, moją miłością i moim całym wielkim szczęściem. 🌟❤️",
+"Moje serce wybrało Ciebie i wiem, że to była najlepsza decyzja w życiu. 🎯",
+"Z Tobą każdy dzień to fascynujący krok w naszą wspólną przyszłość. 📖🧭",
+"Jesteś moim uosobieniem doskonałości. Uwielbiam Cię taką, jaka jesteś. 👑",
+"Kocham Cię tak mocno, że aż brakuje słów w słowniku, by to opisać. 🔥📝",
+"Twój śmiech to moja absolutnie ukochana melodia na każdy dzień roku. 🎶😂",
+"Jesteś moim słońcem, które rozgrzewa moje serce w każdy zimowy poranek. ❄️🔥🌅",
+"Dziękuję za Twoje wspaniałe serce i za to, jak cudownie się mną opiekujesz. 🧸",
+"Jesteś moją najwspanialszą przyjaciółką i jedyną miłością mojego życia. 🫂❤️",
+"Przy Tobie nawet najbardziej leniwy dzień staje się pięknym świętem. 🎈🛌",
+"Kocham Cię bez względu na czas, odległość czy życiowe zakręty. Zawsze. 🔒♾️",
+"Twój wzrok potrafi stopić wszelkie lodowate myśli w moim sercu. 👀🔥",
+"Jesteś moją pierwszą i najważniejszą myślą, gdy tylko otwieram oczy. 🌅🧠",
+"Dziękuję, że zawsze mogę na Ciebie liczyć. Jesteś moim oparciem. 🤝🛡️",
+"Jesteś moim największym sukcesem w życiu. Moim powodem do dumy. 🏆🗣️",
+"Moje serce bije mocniej za każdym razem, gdy widzę Twoje imię na ekranie. 📱💓",
+"Uwielbiam Twoją niesamowitą osobowość – jesteś po prostu jedyna w swoim rodzaju. 🎨🌟",
+"Jesteś moim najwspanialszym skarbem, o który będę dbać z całych moich sił. 🪙🤝",
+"Kocham Cię miłością, która nie zna granic i stale rośnie z każdym dniem. 📈💘",
+"Twój uśmiech to mój absolutnie ulubiony widok na całym tym świecie. 🌍😄",
+"Jesteś moim największym motywatorem do sięgania po najwyższe szczyty. 🚀⛰️",
+"Dziękuję za każdą wspólną sekundę, bo każda z nich tworzy naszą piękną wieczność. ⏳❤️"
+ ];
+  function ustawTekstDnia() {
+    const dzis = new Date();
+    const start = new Date(dzis.getFullYear(), 0, 0);
+    const diff = dzis - start;
+    const jedenDzien = 1000 * 60 * 60 * 24;
+    const dzienRoku = Math.floor(diff / jedenDzien);
+
+    const indeks = dzienRoku % wiadomosciMilosne.length;
+    
+    // Ta linijka szuka elementu z id="tekst-ai" i podmienia napis
+    const element = document.getElementById('tekst-ai');
+    if (element) {
+      element.innerText = wiadomosciMilosne[indeks];
+    }
+  }
+    ustawTekstDnia(); 
+
+  
+
+function togglePlay(event) {
+  if (event) event.stopPropagation(); // Zapobiega natychmiastowemu ukrywaniu menu na telefonie przy kliknięciu przycisku
+  
+  const mojeVideo = document.getElementById('nasze-video');
+  const przyciskMuzyki = document.getElementById('music-control-btn');
+  
+  if (!mojeVideo) return;
+
+  if (mojeVideo.readyState === 0) {
+    mojeVideo.load();
+  }
+
+  if (mojeVideo.paused) {
+    mojeVideo.play()
+      .then(() => {
+        przyciskMuzyki.innerText = "Zatrzymaj muzykę ⏸️";
+      })
+      .catch(err => console.log("Błąd odtwarzania:", err));
+  } else {
+    mojeVideo.pause();
+    przyciskMuzyki.innerText = "Włącz muzykę ▶️";
+  }
+}
+
+
+
+// ==========================================
+// CONFIG: SZYFR I ZMIENNE GLOBALNE
+// ==========================================
+const POPRAWNY_KOD = "777"; // Twój zdefiniowany szyfr dostępu
+let wpisanyPin = "";
+
+// Definicja odtwarzacza wideo MP4
+const mojeVideo = document.getElementById('nasze-video');
+const przyciskMuzyki = document.getElementById('music-control-btn');
+
+// ==========================================
+// FUNKCJE OBSŁUGI KLAWIATURY PIN
+// ==========================================
+function updateDisplay() {
+  const display = document.getElementById('pin-display');
+  if (!display) return;
+  
+  if (wpisanyPin.length === 0) {
+    display.innerText = "***";
+  } else {
+    // Pokazuje wpisane cyfry, a resztę maskuje gwiazdkami do 3 znaków
+    display.innerText = wpisanyPin.padEnd(3, "*").replace(/./g, (char, index) => index < wpisanyPin.length ? wpisanyPin[index] : "*");
+  }
+}
+
+function pressKey(num) {
+  if (wpisanyPin.length < 3) {
+    wpisanyPin += num;
+    updateDisplay();
+    const errorMsg = document.getElementById('pin-error');
+    if (errorMsg) errorMsg.style.display = 'none';
+  }
+}
+
+function clearPin() {
+  wpisanyPin = "";
+  updateDisplay();
+  const errorMsg = document.getElementById('pin-error');
+  if (errorMsg) errorMsg.style.display = 'none';
+}
+
+// ==========================================
+// WERYFIKACJA KODU I AUTOMATYCHNY START MP4
+// ==========================================
+function checkPin() {
+  if (wpisanyPin === POPRAWNY_KOD) {
+    // Sukces! Pobieramy ekran blokady
+    const overlay = document.getElementById('welcome-overlay');
+    
+    // NAPRAWIONE: Uruchomienie filmu wideo MP4 (obraz + dźwięk) przy użyciu kliknięcia jako zgody dla przeglądarki
+    if (mojeVideo) {
+      mojeVideo.play()
+        .then(() => {
+          if (przyciskMuzyki) przyciskMuzyki.innerText = "Zatrzymaj muzykę ⏸️";
+        })
+        .catch(err => {
+          console.log("Autoplay wstrzymany przez zabezpieczenia systemowe:", err);
+        });
+    }
+    
+    // Płynne gaszenie i schowanie ekranu blokady
+    if (overlay) {
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 500);
+    }
+  } else {
+    // Błędny kod PIN
+    clearPin();
+    const errorMsg = document.getElementById('pin-error');
+    if (errorMsg) errorMsg.style.display = 'block';
+  }
+}
+
+// ==========================================
+// OBSŁUGA FIZYCZNEJ KLAWIATURY KOMPUTERA
+// ==========================================
+document.addEventListener('keydown', function(event) {
+  const overlay = document.getElementById('welcome-overlay');
+  if (!overlay || overlay.style.display === 'none') return;
+  
+  if (event.key >= '0' && event.key <= '9') {
+    pressKey(event.key);
+  } else if (event.key === 'Backspace' || event.key === 'Escape') {
+    clearPin();
+  } else if (event.key === 'Enter') {
+    checkPin();
+  }
+});
+
+// ==========================================
+// STEROWANIE ODTRWARZACZEM NA STRONIE (PLAY/PAUSE)
+// ==========================================
+function togglePlay(event) {
+  if (event) event.stopPropagation(); // Blokuje chowanie menu na telefonach
+  if (!mojeVideo) return;
+
+  if (mojeVideo.paused) {
+    mojeVideo.play()
+      .then(() => {
+        if (przyciskMuzyki) przyciskMuzyki.innerText = "Zatrzymaj muzykę ⏸️";
+      })
+      .catch(err => console.log("Nie można odtworzyć wideo:", err));
+  } else {
+    mojeVideo.pause();
+    if (przyciskMuzyki) przyciskMuzyki.innerText = "Włącz muzykę ▶️";
+  }
+}
+
+
+
+// Funkcja otwierająca zdjęcie na pełnym ekranie
+function openLightbox(element) {
+  const overlay = document.getElementById('lightbox-overlay');
+  const lightboxImg = document.getElementById('lightbox-img');
+  
+  lightboxImg.src = element.src; // Pobiera adres klikniętego zdjęcia
+  overlay.classList.add('active'); // Pokazuje overlay
+}
+
+// Funkcja zamykająca podgląd po kliknięciu w dowolne miejsce ekranu
+function closeLightbox() {
+  const overlay = document.getElementById('lightbox-overlay');
+  overlay.classList.remove('active');
+}
+
+
+
+
+ </script>
+
+ <!-- Pełnoekranowy podgląd zdjęcia (Lightbox) -->
+<div id="lightbox-overlay" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="Powiększone zdjęcie">
+</div>
+
+
+</body>
+</html>
+
