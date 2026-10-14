@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang='pl'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='style.css'>
+  <title>Dla mojej buby ❤️</title>
+</head>
+<body>
+
+  <!-- Pasek na samej górze strony -->
+  <div class="top-bar">
+    <span>❤️ Dla Wstrętnej baby ❤️</span>
+  </div>
+
+  <!-- Główna zawartość strony -->
+  <div class="main-container">
+    
+    <div class="love-header">
+      <h1>Kocham Cię! 🥰</h1>
+      <p>Jesteś dla mnie ważna i jak bardzo doceniam każdą chwilę spędzoną razem.</p>
+    </div>
+
+    <!-- Slider ze zdjęciami i napisami -->
+    <div class="carousel-wrapper">
+      <button class="arrow-btn left" onclick="scrollSlider(-1)">&#10094;</button>
+      
+      <div class="carousel" id="love-carousel">
+        <div class="carousel-item">
+          <img src="foto9.jpg" alt="ZDJECIE">
+          <div class="image-caption">Pierwsze spotkanie 👩‍❤️‍👨</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto4.jpg" alt="ZDJECIE">
+          <div class="image-caption">Moja buba ❤️</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto5.jpg" alt="ZDJECIE">
+          <div class="image-caption">Słodka jestes wiesz? </div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto6.jpg" alt="ZDJECIE">
+          <div class="image-caption">Zakapturzona wredna baba 😘</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto7.jpg" alt="ZDJECIE">
+          <div class="image-caption">👍</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto8.jpg" alt="ZDJECIE">
+          <div class="image-caption">Ciekawy filter 🙃</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto1.jpg" alt="ZDJECIE">
+          <div class="image-caption">Fajny język masz 👩‍❤️‍👨</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto22.jpg" alt="ZDJECIE">
+          <div class="image-caption">Twój uśmiech, który rozjaśnia każdy mój dzień! 😊</div>
+        </div>
+        <div class="carousel-item">
+          <img src="foto3.jpg" alt="ZDJECIE">
+          <div class="image-caption">Na zawsze razem, niezależnie od tego co się będzie działo 🌍</div>
+        </div>
+      </div>
+      
+      <button class="arrow-btn right" onclick="scrollSlider(1)">&#10095;</button>
+    </div>
+
+    <!-- Sekcja z wyznaniami -->
+    <div class="love-letter">
+      <h2>Kilka powodów, dla których Cię kocham:</h2>
+      <ul>
+        <li>Za to, że wprowadziłaś do mojego życia wchuj dużo szczęścia </li>
+        <li>Za twoje bardzo piękne oczka 👀 </li>
+        <li>Za to, że jesteś sobą i czuje sie wchuj dobrze przy tobie</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Skrypty JavaScript -->
+  <script>
+    // Obsługa slidera zdjęć
+    function scrollSlider(direction) {
+      const carousel = document.getElementById('love-carousel');
+      const itemWidth = carousel.clientWidth;
+      carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+    }
+
+    // Generowanie latających serduszek w tle
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-bg');
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 4 + 6 + 's'; // od 6 do 10 sekund
+      heart.style.fontSize = Math.random() * 15 + 15 + 'px'; // wielkość serca
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+    // Twórz nowe serduszko co 600ms
+    setInterval(createHeart, 600);
+  </script>
+
+</body>
+</html>
